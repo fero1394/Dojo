@@ -20,6 +20,6 @@ public class DojoApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		Filtro app = new Filtro();
-		app.dojo1();
+		app.distinct();
 	}
 }

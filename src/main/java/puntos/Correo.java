@@ -46,7 +46,7 @@ public class Correo {
         listaCorreos.add(new Correo("felipemunevarn@gmail.com"));
         listaCorreos.add(new Correo("mcym_1995@hotmail.com"));
         listaCorreos.add(new Correo("zairmass@hotmail.com"));
-        listaCorreos.add(new Correo("jcgo125@outlook.com"));
+        listaCorreos.add(new Correo("martinezmayra605@gmail.com"));
         listaCorreos.add(new Correo("martinezmayra605@gmail.com"));
 
         return listaCorreos;

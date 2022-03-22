@@ -6,16 +6,17 @@ import reactor.core.publisher.Flux;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Filtro {
 
     private static final Logger log = LoggerFactory.getLogger(Filtro.class);
     private Correo correo = new Correo();
 
-    public void dojo1(){
+    public void distinct(){
         Flux.fromIterable(correo.listaCorreos())
                 .distinct()
-                .subscribe(p -> log.info(p.toString()));
+                .collect(Collectors.toList());
     }
 
     public void correosRepetidos(){
