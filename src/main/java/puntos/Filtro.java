@@ -101,28 +101,24 @@ public class Filtro {
         
     }
 
+    public void correoRecibido(){
+        boolean correoEnviado = true;
 
+        List<Correo> correos = new ArrayList<>(correo.listaCorreos());
+        List<Correo> correosEnviados = new ArrayList<>();
 
+        correos.get(1).setCorreoRecibido(true);
+        correos.get(2).setCorreoRecibido(true);
+        correos.get(3).setCorreoRecibido(true);
+        correos.get(4).setCorreoRecibido(true);
+        correos.get(5).setCorreoRecibido(true);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public void correosRepetidos(){
-
-      //Aqui lista de correos
-
-     // Flux.fromIterable(correos.getListaCorreos())
-      //.subscribe(c -> log.info(c.toString);
+        Flux.fromIterable(correos)
+                .filter(p -> {
+                    return p.isCorreoRecibido();
+                })
+                .subscribe(p -> log.info(p.toString()));
     }
-
 }
+
+
