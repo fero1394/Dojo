@@ -27,8 +27,16 @@ public class Filtro {
     public void filtro(){
 
         Flux.fromIterable(correo.listaCorreos())
-                .filter(p -> p.getCorreo().contains("outlook") && p.getCorreo().contains("gmail") && p.getCorreo().contains("hotmail"))
-                .subscribe(p -> log.isDebugEnabled());
+                .filter(p -> p.getCorreo().contains("outlook"))
+                .subscribe(p -> log.info("Si hay correos con dominio outlook"));
+
+        Flux.fromIterable(correo.listaCorreos())
+                .filter(p -> p.getCorreo().contains("gmail"))
+                .subscribe(p -> log.info("Si hay correos con dominio gmail"));
+
+        Flux.fromIterable(correo.listaCorreos())
+                .filter(p -> p.getCorreo().contains("hotmail"))
+                .subscribe(p -> log.info("Si hay correos con dominio hotmail"));
 
     }
 
