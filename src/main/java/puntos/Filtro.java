@@ -7,6 +7,8 @@ import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Filtro {
@@ -15,18 +17,11 @@ public class Filtro {
     private Correo correo = new Correo();
 
     public void distinct(){
-        
 
         Flux.fromIterable(correo.listaCorreos())
                 .distinct()
                 .subscribe(p -> log.info(p.toString()));
 
-        
-        /*
-        List<Correo> correosNoRepetidos = correo.listaCorreos();
-        correosNoRepetidos = correosNoRepetidos.stream().distinct().collect(Collectors.toList());
-        System.out.println(correosNoRepetidos);
-    */
     }
 
     public void filtro(){
@@ -37,6 +32,35 @@ public class Filtro {
 
     }
 
+    public void correoValido(){
+
+        String regx = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+        Pattern pattern = Pattern.compile(regx);
+
+
+        List<Correo> correos = new ArrayList<>(correo.listaCorreos());
+        Flux.fromIterable(correos)
+                .filter(p -> {
+                    Matcher matcher  = pattern.matcher(p.getCorreo());
+                    return matcher.matches();
+                })
+                .map(p -> {
+                    return p;
+                })
+                .subscribe(p -> log.info(p.toString()));
+
+        Flux.fromIterable(correos)
+                .filter(p -> {
+                    Matcher matcher  = pattern.matcher(p.getCorreo());
+                    return matcher.matches();
+                })
+                .map(p -> {
+                    return p;
+                })
+                .count()
+                .subscribe(p -> log.info("Cantidad de Correos Validos: " + p));
+
+    }
     public void cantidadTotalCorreos(){
         Flux.fromIterable(correo.listaCorreos())
                 .count()

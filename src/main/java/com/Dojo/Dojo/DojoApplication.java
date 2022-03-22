@@ -26,6 +26,7 @@ public class DojoApplication implements CommandLineRunner {
 		//app.cantidadCorreosGmail();
 		//app.cantidadCorreosHotmail();
 		//app.cantidadCorreosOutlook();
+		app.correoValido();
 
 	}
 }
