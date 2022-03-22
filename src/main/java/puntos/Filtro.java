@@ -32,8 +32,18 @@ public class Filtro {
 
         Flux.fromIterable(correo.listaCorreos())
                 .filter(p -> p.getCorreo().contains("outlook") && p.getCorreo().contains("gmail") && p.getCorreo().contains("hotmail"))
-                .subscribe(p -> System.out.println(p));
+                .subscribe(p -> log.isDebugEnabled());
 
+    }
+
+    public void cantidadCorreos(){
+        Flux.fromIterable(correo.listaCorreos())
+                .count()
+                .subscribe(p -> log.info("Cantidad: " + p));
+    }
+    
+    public void cantidadCorreosEspecificos(){
+        Flux.fromIterable()
     }
 
 
