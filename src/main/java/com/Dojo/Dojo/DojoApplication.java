@@ -20,6 +20,7 @@ public class DojoApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		Filtro app = new Filtro();
-		app.distinct();
+		//app.distinct(); //Elimina el ultimo correo que esta igual
+		app.filtro();
 	}
 }

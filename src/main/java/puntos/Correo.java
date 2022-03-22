@@ -2,6 +2,7 @@ package puntos;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Correo {
 
@@ -65,5 +66,18 @@ public class Correo {
         return "Correo{" +
                 "correo='" + correo + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Correo correo1 = (Correo) o;
+        return correo.equals(correo1.correo) && listaCorreos.equals(correo1.listaCorreos);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(correo, listaCorreos);
     }
 }

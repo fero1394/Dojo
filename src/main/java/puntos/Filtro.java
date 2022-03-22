@@ -14,10 +14,37 @@ public class Filtro {
     private Correo correo = new Correo();
 
     public void distinct(){
+        
+
         Flux.fromIterable(correo.listaCorreos())
                 .distinct()
-                .collect(Collectors.toList());
+                .subscribe(p -> log.info(p.toString()));
+
+        
+        /*
+        List<Correo> correosNoRepetidos = correo.listaCorreos();
+        correosNoRepetidos = correosNoRepetidos.stream().distinct().collect(Collectors.toList());
+        System.out.println(correosNoRepetidos);
+    */
     }
+
+    public void filtro(){
+
+        Flux.fromIterable(correo.listaCorreos())
+                .filter(p -> p.getCorreo().contains("outlook") && p.getCorreo().contains("gmail") && p.getCorreo().contains("hotmail"))
+                .subscribe(p -> System.out.println(p));
+
+    }
+
+
+
+
+
+
+
+
+
+
 
     public void correosRepetidos(){
 
