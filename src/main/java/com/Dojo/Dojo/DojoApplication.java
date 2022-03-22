@@ -22,7 +22,10 @@ public class DojoApplication implements CommandLineRunner {
 		Filtro app = new Filtro();
 		//app.distinct(); //Elimina el ultimo correo que esta igual
 		//app.filtro();
-		app.cantidadCorreos();
+		//app.cantidadTotalCorreos();
+		//app.cantidadCorreosGmail();
+		//app.cantidadCorreosHotmail();
+		//app.cantidadCorreosOutlook();
 
 	}
 }

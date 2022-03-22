@@ -19,7 +19,7 @@ public class Correo {
 
     public List<Correo> listaCorreos(){
 
-        listaCorreos.add(new Correo("eddi.garcia@outlook.com"));
+        listaCorreos.add(new Correo("eddi.garciaoutlook.com"));
         listaCorreos.add(new Correo("sara310105@hotmail.com"));
         listaCorreos.add(new Correo("naranjobenavidesd@gmail.com"));
         listaCorreos.add(new Correo("gerald.e2309@outlook.com"));

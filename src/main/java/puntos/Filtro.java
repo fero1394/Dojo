@@ -3,6 +3,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import puntos.Correo;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,15 +37,43 @@ public class Filtro {
 
     }
 
-    public void cantidadCorreos(){
+    public void cantidadTotalCorreos(){
         Flux.fromIterable(correo.listaCorreos())
                 .count()
-                .subscribe(p -> log.info("Cantidad: " + p));
+                .subscribe(p -> log.info("Cantidad Total Correos: " + p));
     }
     
-    public void cantidadCorreosEspecificos(){
-        Flux.fromIterable()
+    public void cantidadCorreosGmail() {
+        Flux.fromIterable(correo.listaCorreos())
+                .filter(p -> p.getCorreo().contains("gmail"))
+                .count()
+                .subscribe(p -> log.info("Cantidad correos Gmail: " + p));
+
+
     }
+
+    public void cantidadCorreosOutlook(){
+
+        Flux.fromIterable(correo.listaCorreos())
+                .filter(e -> e.getCorreo().contains("outlook"))
+                .count()
+                .subscribe(e -> log.info("Cantidad correos Outlook: " + e));
+
+}
+
+    public void cantidadCorreosHotmail(){
+        Flux.fromIterable(correo.listaCorreos())
+                .filter(f -> f.getCorreo().contains("hotmail"))
+                .count()
+                .subscribe(f -> log.info("Cantidad correos Hotmail: " + f));
+        
+    }
+
+
+
+
+
+
 
 
 
